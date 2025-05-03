@@ -17,12 +17,12 @@
   --gamba-ui-border-radius: 20px; /* Define border radius */
 
   /* Button styles */
-  --gamba-ui-button-default-background: linear-gradient(to right, #131724, #7211d4); /* Gradient for default button background */
-  --gamba-ui-button-default-background-hover: linear-gradient(to right, #210892, #090325); /* Gradient for default button background on hover */
+  --gamba-ui-button-default-background: linear-gradient(to right, #131724, #BA1319); /* Gradient for default button background */
+  --gamba-ui-button-default-background-hover: linear-gradient(to right, #801317, #090325); /* Gradient for default button background on hover */
   --gamba-ui-button-default-color: white; /* Default button text color */
 
-  --gamba-ui-button-main-background: linear-gradient(to right, #131724, #7211d4); /* Gradient for main button background */
-  --gamba-ui-button-main-background-hover: linear-gradient(to right, #210892, #090325); /* Gradient for main button background on hover */
+  --gamba-ui-button-main-background: linear-gradient(to right, #131724, #BA1319); /* Gradient for main button background */
+  --gamba-ui-button-main-background-hover: linear-gradient(to right, #801317, #090325); /* Gradient for main button background on hover */
 
   /* Input styles */
   --gamba-ui-input-background: #04d9ff; /* Input background color */
@@ -64,7 +64,7 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: #9564ff; /* Set color of scrollbar thumb */
+  background-color: #BA1319; /* Set color of scrollbar thumb */
 }
 
 /* Wallet adapter button styles */
