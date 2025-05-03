@@ -1,0 +1,115 @@
+/* Define font face */
+@font-face {
+  font-family: 'Azonix';
+  src: url('./fonts/Azonix.otf') format('opentype');
+}
+
+/* Box sizing */
+* {
+  box-sizing: border-box;
+}
+
+/* Root variables */
+:root {
+  --background-color: #0b0b0e; /* Set background color */
+  --text-color: #ffffff; /* Set text color */
+  --padding: 5px !important; /* Set global padding */
+  --gamba-ui-border-radius: 20px; /* Define border radius */
+
+  /* Button styles */
+  --gamba-ui-button-default-background: linear-gradient(to right, #131724, #7211d4); /* Gradient for default button background */
+  --gamba-ui-button-default-background-hover: linear-gradient(to right, #210892, #090325); /* Gradient for default button background on hover */
+  --gamba-ui-button-default-color: white; /* Default button text color */
+
+  --gamba-ui-button-main-background: linear-gradient(to right, #131724, #7211d4); /* Gradient for main button background */
+  --gamba-ui-button-main-background-hover: linear-gradient(to right, #210892, #090325); /* Gradient for main button background on hover */
+
+  /* Input styles */
+  --gamba-ui-input-background: #04d9ff; /* Input background color */
+  --gamba-ui-input-color: #ffffff; /* Input text color */
+  --gamba-ui-input-background-hover: #11111d; /* Input background color on hover */
+}
+
+/* Global font settings */
+body, input, button, textarea, pre {
+  font-family: 'Azonix', 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Set font family */
+  font-size: 15px; /* Set base font size */
+}
+
+/* Reset margin for headings */
+h1, h2 {
+  margin: 0; /* Reset margin for headings */
+}
+
+/* Body styles */
+body {
+  background: var(--background-color); /* Set background color */
+  color: var(--text-color); /* Set text color */
+  cursor: default; /* Set default cursor */
+  margin: 0; /* Reset margin */
+  overflow-y: scroll; /* Enable vertical scrolling */
+  overflow-x: hidden; /* Hide horizontal overflow */
+  -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+}
+
+/* Anchor styles */
+a {
+  color: inherit; /* Inherit text color */
+  text-decoration: none; /* Remove default underline */
+}
+
+/* Scrollbar styles */
+body::-webkit-scrollbar {
+  width: 4px; /* Set width of scrollbar */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #9564ff; /* Set color of scrollbar thumb */
+}
+
+/* Wallet adapter button styles */
+.wallet-adapter-button.wallet-adapter-button-trigger {
+  height: 40px; /* Set button height */
+  line-height: 40px; /* Set button line height */
+  font-weight: normal; /* Set font weight */
+  background: rgb(1, 1, 1); /* Set button background color */
+  border-radius: 10px; /* Set button border radius */
+}
+
+/* Styled button class */
+.styledButton {
+  --background-color: var(--gamba-ui-button-default-background); /* Set default button background */
+  --background-color-hover: var(--gamba-ui-button-default-background); /* Set default button background on hover */
+  --padding: 5px; /* Set button padding */
+  background: var(--background-color); /* Set button background */
+  color: white; /* Set button text color */
+  border: none; /* Remove button border */
+  border-radius: var(--gamba-ui-border-radius); /* Set button border radius */
+  padding: var(--padding); /* Apply button padding */
+  cursor: pointer; /* Set cursor to pointer */
+  text-align: center; /* Center button text */
+  align-items: center; /* Center button items */
+}
+
+/* Footer styles */
+footer {
+  background-color: #000; /* Set footer background color */
+  color: #fff; /* Set footer text color */
+  padding: 20px; /* Add padding to footer */
+  text-align: center; /* Center align footer content */
+}
+
+footer a {
+  color: #fff; /* Set link color in footer */
+}
+
+/* Background image styles */
+.bg-background-image {
+  background-image: url('/galaxy.png'); /* Set background image */
+  background-position: center; /* Center background image */
+  background-repeat: no-repeat; /* Disable background image repeat */
+  background-size: cover; /* Cover entire background */
+  background-attachment: fixed; /* Fixed background position */
+}
+
+/* Add your other styles here */
