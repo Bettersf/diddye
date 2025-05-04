@@ -1,11 +1,20 @@
-import { GambaUi, TokenValue, useCurrentPool, useGambaPlatformContext, useUserBalance } from 'gamba-react-ui-v2'
+import { 
+  GambaUi, 
+  TokenValue, 
+  useCurrentPool, 
+  useGambaPlatformContext, 
+  useUserBalance,
+} from 'gamba-react-ui-v2'
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import { Modal } from '../components/Modal'
-import { PLATFORM_JACKPOT_FEE } from '../constants'
+import LeaderboardsModal from './LeaderBoard/LeaderboardsModal'
+import { PLATFORM_JACKPOT_FEE, PLATFORM_CREATOR_ADDRESS } from '../constants'
+import { useMediaQuery } from '../hooks/useMediaQuery'
 import TokenSelect from './TokenSelect'
 import { UserButton } from './UserButton'
+import { ENABLE_LEADERBOARD } from '../constants'
 
 const Bonus = styled.button`
   all: unset;
@@ -37,6 +46,7 @@ const StyledHeader = styled.div`
   left: 0;
   z-index: 1000;
   backdrop-filter: blur(20px);
+  position: fixed;
 `
 
 const Logo = styled(NavLink)`
@@ -53,6 +63,8 @@ export default function Header() {
   const balance = useUserBalance()
   const [bonusHelp, setBonusHelp] = React.useState(false)
   const [jackpotHelp, setJackpotHelp] = React.useState(false)
+  const isDesktop = useMediaQuery('lg') 
+  const [showLeaderboard, setShowLeaderboard] = React.useState(false)
 
   return (
     <>
@@ -60,48 +72,84 @@ export default function Header() {
         <Modal onClose={() => setBonusHelp(false)}>
           <h1>Bonus ✨</h1>
           <p>
-            You have <b><TokenValue amount={balance.bonusBalance} /></b> worth of free plays. This bonus will be applied automatically when you play.
+            You have <b>
+              <TokenValue amount={balance.bonusBalance} />
+            </b>{' '}
+            worth of free plays. This bonus will be applied automatically when you
+            play.
           </p>
-          <p>
-            Note that a fee is still needed from your wallet for each play.
-          </p>
+          <p>Note that a fee is still needed from your wallet for each play.</p>
         </Modal>
       )}
+
       {jackpotHelp && (
         <Modal onClose={() => setJackpotHelp(false)}>
           <h1>Jackpot 💰</h1>
           <p style={{ fontWeight: 'bold' }}>
-            There{'\''}s <TokenValue amount={pool.jackpotBalance} /> in the Jackpot.
+            There&apos;s <TokenValue amount={pool.jackpotBalance} /> in the
+            Jackpot.
           </p>
           <p>
             The Jackpot is a prize pool that grows with every bet made. As the Jackpot grows, so does your chance of winning. Once a winner is selected, the value of the Jackpot resets and grows from there until a new winner is selected.
           </p>
           <p>
-            You will be paying a maximum of {(context.PLATFORM_JACKPOT_FEE * 100).toLocaleString(undefined, { maximumFractionDigits: 4 })}% for each wager for a chance to win.
+            You pay a maximum of{' '}
+            {(PLATFORM_JACKPOT_FEE * 100).toLocaleString(undefined, { maximumFractionDigits: 4 })}
+            % of each wager for a chance to win.
           </p>
-          <GambaUi.Switch
-            checked={context.defaultJackpotFee > 0}
-            onChange={(checked) => context.setDefaultJackpotFee(checked ? PLATFORM_JACKPOT_FEE : 0)}
-          />
+          <label style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            {context.defaultJackpotFee === 0 ? 'DISABLED' : 'ENABLED'}
+            <GambaUi.Switch
+              checked={context.defaultJackpotFee > 0}
+              onChange={(checked) =>
+               context.setDefaultJackpotFee(checked ? PLATFORM_JACKPOT_FEE : 0)
+             }
+           />
+          </label>
         </Modal>
       )}
+
+      {ENABLE_LEADERBOARD && showLeaderboard && (
+        <LeaderboardsModal
+          creator={PLATFORM_CREATOR_ADDRESS.toBase58()}
+          onClose={() => setShowLeaderboard(false)}
+        />
+      )}
+
       <StyledHeader>
         <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
           <Logo to="/">
-            <img alt="SolBets desktop logo" src="/logo.png" />
+            <img alt="Gamba logo" src="/logo.svg" />
           </Logo>
         </div>
-        <div style={{ display: 'flex', gap: '10px', alignItems: 'center', position: 'relative' }}>
+
+        <div
+          style={{
+            display: 'flex',
+            gap: '10px',
+            alignItems: 'center',
+            position: 'relative',
+          }}
+        >
           {pool.jackpotBalance > 0 && (
             <Bonus onClick={() => setJackpotHelp(true)}>
               💰 <TokenValue amount={pool.jackpotBalance} />
             </Bonus>
           )}
+
           {balance.bonusBalance > 0 && (
             <Bonus onClick={() => setBonusHelp(true)}>
               ✨ <TokenValue amount={balance.bonusBalance} />
             </Bonus>
           )}
+
+          {/* Leaderboard shows only on desktop */}
+          {isDesktop && (
+            <GambaUi.Button onClick={() => setShowLeaderboard(true)}>
+              Leaderboard
+            </GambaUi.Button>
+          )}
+          
           <TokenSelect />
           <UserButton />
         </div>

@@ -1,17 +1,21 @@
 import { useWalletModal } from '@solana/wallet-adapter-react-ui'
+import { GambaUi } from 'gamba-react-ui-v2'
 import { useTransactionError } from 'gamba-react-v2'
 import React from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { Modal } from './components/Modal'
+import { TOS_HTML, ENABLE_TROLLBOX } from './constants'
 import { StyledSection } from './components/Slider'
 import { useToast } from './hooks/useToast'
+import { useUserStore } from './hooks/useUserStore'
 import Dashboard from './sections/Dashboard/Dashboard'
 import Game from './sections/Game/Game'
 import Header from './sections/Header'
 import RecentPlays from './sections/RecentPlays/RecentPlays'
 import Toasts from './sections/Toasts'
 import Footer from './sections/Footer'
-import { GambaUi } from 'gamba-react-ui-v2'
+import TrollBox from './components/TrollBox'
+
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -62,6 +66,7 @@ export default function App() {
           <h2 style={{ textAlign: 'center' }}>Recent Plays</h2>
           <RecentPlays />
         </StyledSection>
+        {ENABLE_TROLLBOX && <TrollBox />}
       </div> 
     </>
   )
