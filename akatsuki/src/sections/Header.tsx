@@ -57,6 +57,13 @@ const Logo = styled(NavLink)`
   }
 `
 
+/* ─────── config ──────────────────────────────────────────────── */
+/** Change this to the creator address whose leaderboard you want
+ *  to display. You can also pipe it in via an env variable. */
+const CREATOR_ADDRESS = 'ExampleCreatorPubkey'
+
+/* ─────── main component ──────────────────────────────────────── */
+
 export default function Header() {
   const pool = useCurrentPool()
   const context = useGambaPlatformContext()
@@ -115,6 +122,16 @@ export default function Header() {
           onClose={() => setShowLeaderboard(false)}
         />
       )}
+      
+      {/* ────── leaderboards modal ────── */}
+      {showLeaderboard && (
+        <LeaderboardsModal
+          creator={PLATFORM_CREATOR_ADDRESS.toBase58()}
+          onClose={() => setShowLeaderboard(false)}
+        />
+      )}
+
+      {/* ────── header bar ────── */}
 
       <StyledHeader>
         <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>

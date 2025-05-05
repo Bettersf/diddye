@@ -14,6 +14,7 @@ import Header from './sections/Header'
 import RecentPlays from './sections/RecentPlays/RecentPlays'
 import Toasts from './sections/Toasts'
 import Footer from './sections/Footer'
+import LeaderboardsModal from './components/LeaderboardsModal'
 import TrollBox from './components/TrollBox'
 
 
@@ -65,6 +66,7 @@ export default function App() {
           </Routes>
           <h2 style={{ textAlign: 'center' }}>Recent Plays</h2>
           <RecentPlays />
+          {ENABLE_TROLLBOX && <TrollBox />}
         </StyledSection>
         {ENABLE_TROLLBOX && <TrollBox />}
       </div> 
