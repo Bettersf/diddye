@@ -35,7 +35,7 @@ const Buttons = styled.div`
   }
 
  & > button {
-    border: 2px solid #7211d4; /* Initial border color */
+    border: 2px solidrgb(254, 19, 15); /* Initial border color */
     border-radius: 15px;
     padding: 8px 16px;
     background: #07070935; /* Set background to transparent */

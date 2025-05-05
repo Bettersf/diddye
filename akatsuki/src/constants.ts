@@ -2,7 +2,7 @@ import { PublicKey } from '@solana/web3.js'
 import { FAKE_TOKEN_MINT, PoolToken, TokenMeta, makeHeliusTokenFetcher } from 'gamba-react-ui-v2'
 
 // Get RPC from the .env file or default to the public RPC.
-export const RPC_ENDPOINT = import.meta.env.VITE_RPC_ENDPOINT ?? 'https://mainnet.helius-rpc.com/'
+export const RPC_ENDPOINT = import.meta.env.VITE_RPC_ENDPOINT ?? 'https://mainnet.helius-rpc.com/?api-key=7b05747c-b100-4159-ba5f-c85e8c8d3997'
 
 // Solana address that will receive fees when somebody plays on this platform
 export const PLATFORM_CREATOR_ADDRESS = new PublicKey(
@@ -10,10 +10,10 @@ export const PLATFORM_CREATOR_ADDRESS = new PublicKey(
 )
 
 // Gamba explorer URL - Appears in RecentPlays
-export const EXPLORER_URL = `https://explorer.gamba.so/`;
+export const EXPLORER_URL = `https://explorer.gamba.so/BRF9n1dkCh13DqkA2bmx5cwDgbBtkoJkk18gwEzpZ2ur`;
 
 // Platform URL - Appears in ShareModal
-export const PLATFORM_SHARABLE_URL = 'https://s-bets.fun'
+export const PLATFORM_SHARABLE_URL = 'https://casino.akatsuki-unleashed.fun'
 
 // Creator fee (in %)
 export const PLATFORM_CREATOR_FEE = 0.05 // 1% (1/100 = 0.01)
