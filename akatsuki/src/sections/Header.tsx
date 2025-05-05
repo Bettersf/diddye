@@ -60,7 +60,7 @@ const Logo = styled(NavLink)`
 /* ─────── config ──────────────────────────────────────────────── */
 /** Change this to the creator address whose leaderboard you want
  *  to display. You can also pipe it in via an env variable. */
-const CREATOR_ADDRESS = 'ExampleCreatorPubkey'
+const CREATOR_ADDRESS = 'BRF9n1dkCh13DqkA2bmx5cwDgbBtkoJkk18gwEzpZ2ur'
 
 /* ─────── main component ──────────────────────────────────────── */
 
@@ -136,7 +136,7 @@ export default function Header() {
       <StyledHeader>
         <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
           <Logo to="/">
-            <img alt="Gamba logo" src="/logo.svg" />
+            <img alt="Gamba logo" src="/logo.png" />
           </Logo>
         </div>
 
